@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+    air-quality:
+        image: mongo
+        ports:
+            - "27017:27017"
+        volumes:
+            - mongo-data:/data/db
+
+    test-air-quality:
+        image: mongo
+        ports:
+            - "27018:27017"
+        volumes:
+            - test-mongo-data:/data/db
+
+volumes:
+    mongo-data:
+    test-mongo-data:
