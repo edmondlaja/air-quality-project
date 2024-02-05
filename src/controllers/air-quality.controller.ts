@@ -22,7 +22,7 @@ export class AirQualityController {
     }
 
     @Get("/paris-worst")
-    async getWorstAirQuality() {
+    async getParisWorstAirQuality() {
         const worstRecord = await this.airQualityRepository.getWorstAirQuality(PARIS_LON, PARIS_LAT);
         if (!worstRecord) throw new HttpException(StatusCodes.NOT_FOUND, "No air quality records found.");
         return worstRecord;

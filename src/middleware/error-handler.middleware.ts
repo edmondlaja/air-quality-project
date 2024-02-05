@@ -7,8 +7,6 @@ import { ExternalApiError } from "../errors/external-api-error";
 @Middleware({ type: "after" })
 export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
     error(error: any, req: Request, res: Response, next: NextFunction) {
-        console.error(error);
-
         if (error && error.errors) {
             this.handleValidationError(error, res);
         } else if (error instanceof ExternalApiError) {
