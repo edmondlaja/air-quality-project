@@ -41,7 +41,7 @@ test("getAirQuality - should return pollution data", async (t) => {
             path: `/v2/nearest_city?lat=${mockLatitude}&lon=${mockLongitude}&key=${process.env.IQAIR_API_KEY}`,
             method: "GET",
         })
-        .reply(200, mockResponse);
+        .reply(StatusCodes.OK, mockResponse);
     setGlobalDispatcher(mockAgent);
 
     const response = await request(server)
@@ -50,6 +50,27 @@ test("getAirQuality - should return pollution data", async (t) => {
         .expect(StatusCodes.OK);
 
     t.deepEqual(response.body, mockResponse.data.current.pollution);
+});
+
+test("getAirQuality - should fail if city not found", async (t) => {
+    const mockLatitude = "1";
+    const mockLongitude = "2.352222";
+    const mockResponse = { status: "fail", data: { message: "city_not_found" } };
+    const client = mockAgent.get("https://api.airvisual.com");
+    client
+        .intercept({
+            path: `/v2/nearest_city?lat=${mockLatitude}&lon=${mockLongitude}&key=${process.env.IQAIR_API_KEY}`,
+            method: "GET",
+        })
+        .reply(StatusCodes.BAD_REQUEST, mockResponse);
+    setGlobalDispatcher(mockAgent);
+
+    const response = await request(server)
+        .get(`/air-quality?lat=${mockLatitude}&lon=${mockLongitude}`)
+        .send()
+        .expect(StatusCodes.BAD_REQUEST);
+
+    t.deepEqual(response.body, { message: "city_not_found" });
 });
 
 test("getAirQuality - should fail if no lat", async (t) => {

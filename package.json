@@ -7,7 +7,7 @@
     "start:dev": "npx nodemon",
     "build": "rimraf ./dist && tsc -p tsconfig.json",
     "start": "node ./dist/src/main.js",
-    "test": "npx ava '**/*.test.ts' --serial"
+    "test": "NODE_ENV=test npx ava '**/*.test.ts' --serial"
   },
   "keywords": [],
   "author": "",

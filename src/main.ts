@@ -1,5 +1,5 @@
 import { App } from "./app";
-import { scheduleAirQualityChecks } from "./tasks/air-quality.task";
+import { scheduleParisAirQualityChecks } from "./tasks/air-quality.task";
 
 const app = new App();
 
@@ -8,7 +8,7 @@ export const bootstrap = async () => {
     if (!mongoConnectionString) throw new Error("Mongodb connection string is not set");
 
     await app.initDB(mongoConnectionString);
-    scheduleAirQualityChecks();
+    if (process.env.NODE_ENV !== "test") scheduleParisAirQualityChecks();
     app.initApp();
 };
 
