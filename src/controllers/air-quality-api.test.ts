@@ -2,9 +2,9 @@ import test from "ava";
 import request from "supertest";
 import { MockAgent, setGlobalDispatcher } from "undici";
 import { StatusCodes } from "http-status-codes";
-import { clearDatabase, startApp, stopApp } from "./test-helper";
-import AirQuality from "../src/models/db-schemas/AirQuality";
-import { PARIS_LAT, PARIS_LON } from "../src/common/constants";
+import { clearDatabase, startApp, stopApp } from "../utils/test-helper";
+import AirQuality from "../common/db-schemas/AirQuality";
+import { PARIS_LAT, PARIS_LON } from "../common/constants";
 
 let server;
 const mockAgent = new MockAgent();

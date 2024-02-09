@@ -1,5 +1,5 @@
 import { WorstAirQuality } from "../types/worst-air-quality.type";
-import AirQuality from "../models/db-schemas/AirQuality";
+import AirQuality from "../common/db-schemas/AirQuality";
 
 export class AirQualityRepository {
     async getWorstAirQuality(lon: number, lat: number): Promise<WorstAirQuality> {

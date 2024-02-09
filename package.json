@@ -34,7 +34,7 @@
   },
   "ava": {
     "files": [
-      "test/**/*.test.ts"
+      "**/*.test.ts"
     ],
     "require": [
       "ts-node/register"

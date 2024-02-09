@@ -1,10 +1,10 @@
 import test from "ava";
 import { MockAgent, setGlobalDispatcher } from "undici";
 import { StatusCodes } from "http-status-codes";
-import { clearDatabase, startApp, stopApp } from "./test-helper";
-import { PARIS_LAT, PARIS_LON } from "../src/common/constants";
-import { parisAirQualityCheck } from "../src/tasks/air-quality.task";
-import { AirQualityRepository } from "../src/repositories/air-quality.repository";
+import { clearDatabase, startApp, stopApp } from "../utils/test-helper";
+import { PARIS_LAT, PARIS_LON } from "../common/constants";
+import { parisAirQualityCheck } from "./air-quality.task";
+import { AirQualityRepository } from "../repositories/air-quality.repository";
 
 let server;
 const mockAgent = new MockAgent();

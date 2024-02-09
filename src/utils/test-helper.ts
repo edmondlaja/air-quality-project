@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { App } from "../src/app";
+import { App } from "../app";
 
 const app = new App();
 let server;

@@ -1,6 +1,6 @@
 import cron from "node-cron";
 import { AirQualityService } from "../services/air-quality.service";
-import AirQuality from "../models/db-schemas/AirQuality";
+import AirQuality from "../common/db-schemas/AirQuality";
 import { PARIS_LAT, PARIS_LON } from "../common/constants";
 
 const airQualityService = new AirQualityService();
@@ -13,7 +13,7 @@ export const scheduleParisAirQualityChecks = () => {
 
 export const parisAirQualityCheck = async () => {
     try {
-        const { aqius } = await airQualityService.getAirQuality(PARIS_LON.toString(), PARIS_LAT.toString());
+        const { aqius } = await airQualityService.getAirQuality(PARIS_LON, PARIS_LAT);
 
         const newRecord = new AirQuality({ lon: PARIS_LON, lat: PARIS_LAT, aqius });
         await newRecord.save();

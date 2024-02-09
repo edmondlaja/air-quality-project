@@ -9,17 +9,11 @@ export class CustomErrorHandler implements ExpressErrorMiddlewareInterface {
     error(error: any, req: Request, res: Response, next: NextFunction) {
         if (error && error.errors) {
             this.handleValidationError(error, res);
-        } else if (error instanceof ExternalApiError) {
-            this.handleExternalApiError(error, res);
         } else if (error instanceof HttpError) {
             this.handleHttpError(error, res);
         } else {
             this.handleGenericError(res);
         }
-    }
-
-    private handleExternalApiError(error: ExternalApiError, res: Response) {
-        apiResponse(res, error.statusCode, { message: error.message });
     }
 
     private handleHttpError(error: HttpError, res: Response) {
