@@ -1,4 +1,4 @@
-# Yassir Backend Challenge
+# Air Quality Project
 
 This project provides a set of RESTful APIs to interact with air quality data. Below are the details of how to get started and the available endpoints.
 
@@ -16,12 +16,7 @@ This project provides a set of RESTful APIs to interact with air quality data. B
     This command builds and starts the necessary database containers.
 
 2.  **Environment Variables**:
-    Next, set up the environment variables, there is an .env.example file. If the default port settings are unchanged, your environment variables for mongodb should look like this:
-
-    ```env
-    MONGO_CONNECTION_STRING="mongodb://localhost:27017/air-quality"
-    TEST_MONGO_CONNECTION_STRING="mongodb://localhost:27018/test-air-quality"
-    ```
+    Next, set up the environment variables, there is an .env.example file.
 
 ### Running the Project
 

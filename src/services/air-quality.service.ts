@@ -38,4 +38,8 @@ export class AirQualityService {
         if (!worstRecord) throw new NotFoundError("No air quality records found.");
         return worstRecord;
     }
+
+    async createAirQuality(longitude: number, latitude: number, aqius: number): Promise<void> {
+        await this.airQualityRepository.createAirQuality(longitude, latitude, aqius);
+    }
 }
