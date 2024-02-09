@@ -16,7 +16,7 @@ This project provides a set of RESTful APIs to interact with air quality data. B
     This command builds and starts the necessary database containers.
 
 2.  **Environment Variables**:
-    Next, set up the environment variables, there is an .env.example file.
+    Next, set up the environment variables, there is an .env.example file. For `IQAIR_API_KEY` you need to register on "iqair" and create your API KEY (https://www.iqair.com/fr/dashboard/api)
 
 ### Running the Project
 
